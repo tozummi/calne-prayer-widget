@@ -1,45 +1,47 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: transparent;
+const latitude = 51.448009;
+const longitude = -2.027951;
+
+const coordinates = new adhan.Coordinates(
+  latitude,
+  longitude
+);
+
+const date = new Date();
+
+const params = adhan.CalculationMethod.MuslimWorldLeague();
+
+params.madhab = adhan.Madhab.Shafi;
+
+const prayerTimes = new adhan.PrayerTimes(
+  coordinates,
+  date,
+  params
+);
+
+
+function formatTime(time) {
+  return time.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false
+  });
 }
 
-.prayer-widget {
-  max-width: 650px;
-  padding: 12px;
-}
 
-.prayers {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px;
-}
+document.getElementById("fajr").textContent =
+  formatTime(prayerTimes.fajr);
 
-.prayer {
-  flex: 1;
-  text-align: center;
-  padding: 8px 4px;
-  border-radius: 12px;
-  background: rgba(120, 150, 120, 0.12);
-}
+document.getElementById("sunrise").textContent =
+  formatTime(prayerTimes.sunrise);
 
-.icon {
-  font-size: 18px;
-}
+document.getElementById("dhuhr").textContent =
+  formatTime(prayerTimes.dhuhr);
 
-.name {
-  font-size: 12px;
-  margin-top: 5px;
-  font-weight: 600;
-}
+document.getElementById("asr").textContent =
+  formatTime(prayerTimes.asr);
 
-.time {
-  font-size: 15px;
-  margin-top: 3px;
-}
+document.getElementById("maghrib").textContent =
+  formatTime(prayerTimes.maghrib);
 
-.qibla {
-  margin-top: 12px;
-  text-align: center;
-  font-size: 13px;
-}
+document.getElementById("isha").textContent =
+  formatTime(prayerTimes.isha);
