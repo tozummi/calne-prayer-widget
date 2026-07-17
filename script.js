@@ -1,40 +1,29 @@
 const latitude = 51.448009;
 const longitude = -2.027951;
 
-const coordinates = new adhan.Coordinates(
-  latitude,
-  longitude
-);
+async function getPrayerTimes() {
 
-const params = adhan.CalculationMethod.MuslimWorldLeague();
+  const today = new Date();
 
-const date = new Date();
+  const day = today.getDate();
+  const month = today.getMonth() + 1;
+  const year = today.getFullYear();
 
-const prayerTimes = new adhan.PrayerTimes(
-  coordinates,
-  date,
-  params
-);
+  const url =
+  `https://api.aladhan.com/v1/timings/${day}-${month}-${year}?latitude=${latitude}&longitude=${longitude}&method=3`;
 
-function formatTime(time) {
-  return time.toLocaleTimeString("en-GB", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
+  const response = await fetch(url);
+  const data = await response.json();
+
+  const times = data.data.timings;
+
+
+  document.getElementById("fajr").innerText = times.Fajr;
+  document.getElementById("dhuhr").innerText = times.Dhuhr;
+  document.getElementById("asr").innerText = times.Asr;
+  document.getElementById("maghrib").innerText = times.Maghrib;
+  document.getElementById("isha").innerText = times.Isha;
+
 }
 
-document.getElementById("fajr").innerText =
-  formatTime(prayerTimes.fajr);
-
-document.getElementById("dhuhr").innerText =
-  formatTime(prayerTimes.dhuhr);
-
-document.getElementById("asr").innerText =
-  formatTime(prayerTimes.asr);
-
-document.getElementById("maghrib").innerText =
-  formatTime(prayerTimes.maghrib);
-
-document.getElementById("isha").innerText =
-  formatTime(prayerTimes.isha);
+getPrayerTimes();
