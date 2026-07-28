@@ -1,47 +1,258 @@
+:root {
+  --cream: #f3eee5;
+  --cream-light: #fbf8f2;
+  --sage: #7f8d78;
+  --sage-dark: #4f5d4b;
+  --sage-soft: #dfe5da;
+  --text: #2f352e;
+  --muted: #747b71;
+  --line: rgba(79, 93, 75, 0.14);
+  --shadow: 0 8px 24px rgba(68, 75, 64, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-margin:0;
-font-family: Georgia, Cambria, "Times New Roman", Times, serif; UI",sans-serif;
-background:transparent;
+  margin: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
 }
 
 .widget {
-padding:10px;
-max-width:600px;
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.58),
+      rgba(243, 238, 229, 0.94)
+    );
+  box-shadow: var(--shadow);
+}
+
+.widget-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0 2px 8px;
+}
+
+.widget-heading span {
+  order: 2;
+  color: var(--sage);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.widget-heading h1 {
+  margin: 0;
+  color: var(--sage-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
 .prayers {
-display:flex;
-justify-content:space-between;
-gap:6px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
 }
 
 .prayer {
-flex:1;
-text-align:center;
-padding:8px 3px;
-border-radius:12px;
-background:#f1f5ee;
+  min-width: 0;
+  padding: 8px 2px 7px;
+  text-align: center;
+  border: 1px solid rgba(79, 93, 75, 0.11);
+  border-radius: 12px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(239, 242, 235, 0.8)
+    );
+  box-shadow:
+    0 3px 10px rgba(68, 75, 64, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
 .icon {
-font-size:18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 23px;
+  height: 23px;
+  margin: 0 auto 3px;
+  color: var(--sage);
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.45;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .name {
-font-size:12px;
-font-weight:600;
-margin-top:4px;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.prayer div:last-child {
-font-size:15px;
-margin-top:3px;
+.time {
+  margin-top: 3px;
+  color: var(--sage-dark);
+  font-family: "Playfair Display", serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1;
 }
 
+.details-row {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 6px;
+  margin-top: 7px;
+}
 
-.countdown,
-.qibla {
-text-align:center;
-font-size:13px;
-margin-top:12px;
+.detail-card {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  padding: 7px 8px;
+  border: 1px solid rgba(79, 93, 75, 0.12);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.detail-icon {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin-right: 7px;
+  border-radius: 50%;
+  color: var(--sage-dark);
+  background: var(--sage-soft);
+}
+
+.detail-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.detail-copy {
+  min-width: 0;
+  text-align: left;
+}
+
+.detail-copy span {
+  display: block;
+  margin-bottom: 1px;
+  color: var(--muted);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.detail-copy strong {
+  display: block;
+  overflow: hidden;
+  color: var(--sage-dark);
+  font-size: 0.69rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 420px) {
+  .widget {
+    padding: 8px;
+    border-radius: 16px;
+  }
+
+  .widget-heading {
+    margin-bottom: 7px;
+  }
+
+  .widget-heading h1 {
+    font-size: 0.98rem;
+  }
+
+  .widget-heading span {
+    font-size: 0.55rem;
+  }
+
+  .prayers {
+    gap: 4px;
+  }
+
+  .prayer {
+    padding: 7px 1px 6px;
+    border-radius: 10px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .name {
+    font-size: 0.59rem;
+  }
+
+  .time {
+    font-size: 0.82rem;
+  }
+
+  .details-row {
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .detail-card {
+    padding: 6px;
+  }
+
+  .detail-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  .detail-copy span {
+    font-size: 0.51rem;
+  }
+
+  .detail-copy strong {
+    font-size: 0.61rem;
+  }
 }
