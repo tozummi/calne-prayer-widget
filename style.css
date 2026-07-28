@@ -118,8 +118,8 @@ body {
 .time {
   margin-top: 3px;
   color: var(--sage-dark);
-  font-family: "Cormorant Garamond", serif;
-  font-size: 0.94rem;
+  font-family: "Lora", serif;
+  font-size: 0.98rem;
   font-weight: 700;
   line-height: 1;
 }
