@@ -14,14 +14,9 @@
   box-sizing: border-box;
 }
 
-html,
 body {
   margin: 0;
   background: transparent;
-}
-
-body {
-  padding: 12px;
   color: var(--text);
   font-family: "DM Sans", sans-serif;
 }
