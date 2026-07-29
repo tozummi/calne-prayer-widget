@@ -129,7 +129,7 @@
 
     if (!widget) return;
 
-    const height = Math.ceil(widget.getBoundingClientRect().height);
+    const height = Math.ceil(document.documentElement.scrollHeight);
 
     window.parent.postMessage(
       {
