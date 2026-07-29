@@ -123,6 +123,31 @@
   </main>
 
   <script src="script.js?v=3"></script>
+<script>
+  function sendPrayerWidgetHeight() {
+    const widget = document.querySelector(".widget");
 
+    if (!widget) return;
+
+    const height = Math.ceil(widget.getBoundingClientRect().height);
+
+    window.parent.postMessage(
+      {
+        type: "prayer-widget-height",
+        height: height
+      },
+      "*"
+    );
+  }
+
+  window.addEventListener("load", sendPrayerWidgetHeight);
+  window.addEventListener("resize", sendPrayerWidgetHeight);
+
+  const widget = document.querySelector(".widget");
+
+  if (widget && "ResizeObserver" in window) {
+    new ResizeObserver(sendPrayerWidgetHeight).observe(widget);
+  }
+</script>
 </body>
 </html>
