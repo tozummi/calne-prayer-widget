@@ -7,7 +7,7 @@
   --text: #2f352e;
   --muted: #747b71;
   --line: rgba(79, 93, 75, 0.14);
-  --shadow: 0 8px 24px rgba(68, 75, 64, 0.09);
+  --shadow: none;
 }
 
 * {
